@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        /* Create two equal columns that floats next to each other */
+        .column {
+            float: left;
+            width: 50%;
+            padding: 10px;
+            height: 300px; /* Should be removed. Only for demonstration */
+        }
+
+        /* Clear floats after the columns */
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <title>Info</title>
+</head>
+<body>
+<div class="row">
+  <div class="column">
+    <p>
+        <table class="table">
+    <thead>
+    <tr>
+        <th scope="col">CPU</th>
+        <th scope="col">Gaming Rate</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for i in cpu %}
+    <tr>
+        <td>{{ i.cpu_name }}</td>
+        <td>{{ i.gaming_rate }}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+    </p>
+  </div>
+  <div class="column">
+    <p>
+        <table class="table">
+    <thead>
+    <tr>
+        <th scope="col">GPU</th>
+        <th scope="col">Teraflops</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for i in gpu %}
+    <tr>
+        <td>{{ i.gpu_name }}</td>
+        <td>{{ i.teraflops }}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+    </p>
+  </div>
+</div>
+</body>
+</html>

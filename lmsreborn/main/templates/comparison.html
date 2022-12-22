@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Comparison</title>
+</head>
+<body>
+{{ sys|safe }}
+<strong>Identified characteristics:</strong>
+<br>
+<ul class="bb_ul">
+    <li>
+        <strong>Processor:</strong> {{cpu}} <strong>Gaming Rate:</strong> {{cpu1}} <br>
+    </li>
+    <li>
+        <strong>Graphics:</strong> {{gpu}} <strong>Teraflops:</strong> {{gpu1}} <br>
+    </li>
+    <!--    <li>-->
+    <!--        <strong>Memory:</strong><br>-->
+    <!--    </li>-->
+</ul>
+<strong>Your PC:</strong>
+<br>
+<ul class="bb_ul">
+    <li>
+        <strong>Processor:</strong> {{user.cpu_model}} <strong>Gaming Rate:</strong> {{ucpu1}} <br>
+    </li>
+    <li>
+        <strong>Graphics:</strong> {{user.gpu_model}} <strong>Teraflops:</strong> {{ugpu1}} <br>
+    </li>
+    <!--    <li>-->
+    <!--        <strong>Memory:</strong><br>-->
+    <!--    </li>-->
+</ul>
+<strong>Analysis:</strong>
+<br>
+<ul class="bb_ul">
+    <li>
+        <strong>Your Processor is</strong> {{resc}}% <strong>of the recommended Processor</strong><br>
+    </li>
+    <li>
+        <strong>Your Graphic Card is</strong> {{resg}}% <strong>of the recommended Graphic Card</strong><br>
+    </li>
+    <!--    <li>-->
+    <!--        <strong>Memory:</strong><br>-->
+    <!--    </li>-->
+</ul>
+<strong>{{res}}</strong>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HomePage</title>
+</head>
+<body>
+{% if user.is_authenticated %}
+    <form action="{% url 'comp' %}">
+      <input type="search" placeholder="Insert Steam link" aria-label="Search" name="SteamLink">
+      <button type="submit">Search</button>
+    </form>
+    <form action="{% url 'account' %}">
+      <button type="submit">Account Info</button>
+    </form>
+    <form action="{% url 'logout' %}">
+      <button type="submit">Logout</button>
+    </form>
+    </form>
+    <form action="{% url 'inf' %}">
+      <button type="submit">Info</button>
+    </form>
+{% else %}
+    <form class="def_form" action="{% url 'log' %}">
+      <button type="submit">Login</button>
+    </form>
+{% endif %}
+</body>
+</html>

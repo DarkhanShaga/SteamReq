@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Account Page</title>
+</head>
+<body>
+<h1>Account info:</h1>
+{% if user.is_authenticated %}
+<h1>{{request.user.username}}</h1>
+<h1>{{request.user.email}}</h1>
+<h1>{{request.user.gpu_model}}</h1>
+<h1>{{request.user.cpu_model}}</h1>
+<h1>{{request.user.ram_model}}</h1>
+
+
+<button id="change_username_button" onclick="changeUsername()">Edit</button>
+<form id="change_username_form" hidden="hidden" action="{% url 'updu' %}" method="post">
+    {% csrf_token %}
+    <input type="text" name="new_username">
+    <input type="submit" value="Change Username">
+</form>
+<form id="change_email_form" hidden="hidden" action="{% url 'upde' %}" method="post">
+    {% csrf_token %}
+    <input type="text" name="new_email">
+    <input type="submit" value="Change Email">
+</form>
+<form id="change_password_form" hidden="hidden" action="{% url 'updp' %}" method="post">
+    {% csrf_token %}
+    <input type="text" name="new_password">
+    <input type="submit" value="Change Password">
+</form>
+<form action="{% url 'updg' %}" hidden="hidden" id="change_gpu_form" method="post">
+    {% csrf_token %}
+    <select name="gpu_dropdown">
+        <option disabled selected="selected">GPU:</option>
+        {% for i in gpu %}
+            <option value='{{i.id}}'>{{i.gpu_name}}</option>
+        {% endfor %}
+    </select>
+    <input type="submit" value="Change GPU">
+</form>
+<form action="{% url 'updc' %}" hidden="hidden" id="change_cpu_form" method="post">
+    {% csrf_token %}
+    <select name="cpu_dropdown">
+        <option disabled selected="selected">CPU:</option>
+        {% for i in cpu %}
+            <option value='{{i.id}}'>{{i.cpu_name}}</option>
+        {% endfor %}
+    </select>
+    <input type="submit" value="Change CPU">
+</form>
+<form action="{% url 'updr' %}" hidden="hidden" id="change_ram_form" method="post">
+    {% csrf_token %}
+    <select name="ram_dropdown">
+        <option disabled selected="selected">RAM:</option>
+        {% for i in ram %}
+            <option value='{{i.id}}'>{{i.ram_amount}}</option>
+        {% endfor %}
+    </select>
+    <input type="submit" value="Change RAM">
+</form>
+
+
+<!--<form action="{% url 'updu' %}" hidden="hidden" method="post" id="change_username_form">-->
+<!--    {% csrf_token %}-->
+<!--    <select name="dropdown">-->
+<!--        <option disabled selected="selected">Objects on page:</option>-->
+<!--        <option value="1">Update Username</option>-->
+<!--        <option value="2">Update Email</option>-->
+<!--        <option value="3">30</option>-->
+<!--        <option value="4">40</option>-->
+<!--        <option value="5">50</option>-->
+<!--    </select>-->
+<!--    <input type="submit" value="Select">-->
+<!--</form>-->
+
+
+<form action="{% url 'del' %}">
+<!--     <input type="search" placeholder="Link" aria-label="Search" name="SteamLink">-->
+    <button type="submit">Delete Account</button>
+</form>
+
+
+<script>
+    function changeUsername() {
+        const form = document.getElementById('change_username_form');
+        const form1 = document.getElementById('change_email_form');
+        const form2 = document.getElementById('change_password_form');
+        const form3 = document.getElementById('change_gpu_form');
+        const form4 = document.getElementById('change_cpu_form');
+        const form5 = document.getElementById('change_ram_form');
+        form.hidden = !form.hidden
+        form1.hidden = !form1.hidden
+        form2.hidden = !form2.hidden
+        form3.hidden = !form3.hidden
+        form4.hidden = !form4.hidden
+        form5.hidden = !form5.hidden
+    }
+</script>
+
+
+{% endif %}
+</body>
+</html>
